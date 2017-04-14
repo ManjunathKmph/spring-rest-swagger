@@ -53,5 +53,11 @@ public class Employee {
 	public void setAge(Integer age) {
 		this.age = age;
 	}
+	
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("Employee id : " + this.id).append(" ;Employee Name : " + this.name).append(" ;Employee Age : " + this.age);
+		return sb.toString();
+	}
 
 }
