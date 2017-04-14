@@ -38,9 +38,9 @@ public class EmployeeRestController {
 		return employeeService.getAllEmployees();
 	}
 	
+
 	
-	
-	@RequestMapping(value = "{id}", produces = {MediaType.APPLICATION_JSON_VALUE}, method = RequestMethod.GET)
+	@RequestMapping(value = "/fetch/{id}", produces = {MediaType.APPLICATION_JSON_VALUE}, method = RequestMethod.GET)
 	@ApiOperation(value = "Find by Employee Id", notes = "Find by Employee Id",  response = Employee.class)
 	@ApiResponses(
 			@ApiResponse(code =  404, message = "Employee does not exist for id.")
@@ -65,7 +65,7 @@ public class EmployeeRestController {
 	
 	
 	
-	@RequestMapping(value = "{id}", method = RequestMethod.PUT, consumes = {MediaType.APPLICATION_JSON_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE})
+	@RequestMapping(value = "/update/{id}", method = RequestMethod.PUT, consumes = {MediaType.APPLICATION_JSON_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE})
 	@ApiOperation(value = "Update Employee for id", notes = "Update Employee for id", response = Employee.class)
 	@ApiResponses(
 			@ApiResponse(code = 404, message = "Employee does not exist for id.")
@@ -83,7 +83,7 @@ public class EmployeeRestController {
 	}
 	
 	
-	@RequestMapping(value = "{id}", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
 	@ApiOperation(value = "Delete Employee for id", notes = "Delete Employee for id")
 	@ApiResponses(
 			@ApiResponse(code = 404, message = "Employee does not exist for id.")
