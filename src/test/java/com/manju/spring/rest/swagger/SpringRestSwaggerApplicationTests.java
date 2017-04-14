@@ -50,7 +50,7 @@ public class SpringRestSwaggerApplicationTests {
 		headers.add("Authorization", "Basic " + new String(Base64.encode(CREDENTIALS.getBytes())));
 		HttpEntity<?> request = new HttpEntity<>(headers);
 		//Employee employee = restTemplate.getForObject(REST_SERVICE_URI + "/0", Employee.class);
-		ResponseEntity<Employee> responseEntity = restTemplate.exchange(REST_SERVICE_URI + "/0", HttpMethod.GET, request, Employee.class);
+		ResponseEntity<Employee> responseEntity = restTemplate.exchange(REST_SERVICE_URI + "/fetch/0", HttpMethod.GET, request, Employee.class);
 		assertNotNull(responseEntity.getBody());
 		System.out.println(responseEntity.getBody());
 	}
@@ -81,7 +81,7 @@ public class SpringRestSwaggerApplicationTests {
 		headers.add("Authorization", "Basic " + new String(Base64.encode(CREDENTIALS.getBytes())));
 		HttpEntity<?> request = new HttpEntity<>(employee, headers);
 		//restTemplate.put(REST_SERVICE_URI + "/3", employee);
-		ResponseEntity<Employee> responseEntity = restTemplate.exchange(REST_SERVICE_URI + "/3", HttpMethod.PUT, request, Employee.class);
+		ResponseEntity<Employee> responseEntity = restTemplate.exchange(REST_SERVICE_URI + "/update/3", HttpMethod.PUT, request, Employee.class);
 		assertNotNull(responseEntity.getBody());
 		System.out.println(responseEntity.getBody());
 	}
@@ -94,7 +94,7 @@ public class SpringRestSwaggerApplicationTests {
 			headers.add("Authorization", "Basic " + new String(Base64.encode(CREDENTIALS.getBytes())));
 			HttpEntity<?> request = new HttpEntity<>(headers);
 			//restTemplate.delete(REST_SERVICE_URI + "/2");
-			ResponseEntity<Object> responseEntity = restTemplate.exchange(REST_SERVICE_URI + "/2", HttpMethod.DELETE, request, Object.class);
+			ResponseEntity<Object> responseEntity = restTemplate.exchange(REST_SERVICE_URI + "/delete/2", HttpMethod.DELETE, request, Object.class);
 			assertNotNull(responseEntity.getBody());
 		} catch(HttpClientErrorException ex) {
 			assertTrue(ex.getStatusCode() == HttpStatus.NOT_FOUND);
