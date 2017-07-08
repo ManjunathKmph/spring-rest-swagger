@@ -1,7 +1,9 @@
-package com.manju.kramphub.task.config;
+package com.manju.spring.rest.swagger.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import com.manju.spring.rest.swagger.services.EmployeeService;
 
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
@@ -11,13 +13,6 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-/**
- * Configuration class holds all the bean definitions for the application.
- * 
- * @author manju
- * @version 1.0
- *
- */
 @Configuration
 @EnableSwagger2
 public class AppConfig {
@@ -26,7 +21,7 @@ public class AppConfig {
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.manju.kramphub.task.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.manju.spring.rest.swagger.controller"))
                 .paths(PathSelectors.any())
                 .build()
                 .apiInfo(apiInfo());
@@ -34,10 +29,14 @@ public class AppConfig {
      
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("Kramp Hub task with Swagger")
-                .description("Kramp Hub task Service Api")
+                .title("Spring REST Sample with Swagger")
+                .description("Spring REST Sample with Swagger")
                 .version("1.0")
                 .build();
     }
+	@Bean
+	public EmployeeService getEmployeeService() {
+		return new EmployeeService();
+	}
 
 }
